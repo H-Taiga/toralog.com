@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "configurations": [
+    {
+      "name": "Xdebug",
+      "type": "php",
+      "request": "launch",
+      "port": 8999,
+      "pathMappings": {
+        "/toralog.com": "${workspaceRoot}/src"
+      }
+    }
+  ]
+}
