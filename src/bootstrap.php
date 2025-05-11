@@ -1,5 +1,8 @@
 <?php
-require_once 'Libs/Project.php';
-use Libs\Project;
+require_once 'Libs/Utils/AutoLoader.php';
 
-$project = Project::getInstance();
+use Libs\Utils\AutoLoader;
+
+$auto_loader = AutoLoader::getInstance(dirname(__FILE__));
+
+$project = \Libs\Project::getInstance();

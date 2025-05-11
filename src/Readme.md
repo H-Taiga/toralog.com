@@ -4,8 +4,10 @@
 ```
 src/
   ┣━ Libs/                   // アプリケーションライブラリ
-  ┃    ┗━ Project.php
+  ┃   ┣━ Utils/              // 汎用機能格納Dir
+  ┃   ┃   ┗━ AutoLoader.php
+  ┃   ┗━ Project.php
   ┗━ public/                 // ドキュメントルート
-       ┣━ image/                 // 画像格納Dir
-       ┗━ index.php   
+      ┣━ image/                 // 画像格納Dir
+      ┗━ index.php   
 ```
