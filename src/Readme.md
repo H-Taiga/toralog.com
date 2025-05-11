@@ -11,6 +11,9 @@ src/
   ┃   ┣━ HttpCodeEnum.php
   ┃   ┗━ SymbolEnum.php
   ┣━ Libs/                         // アプリケーションライブラリ
+  ┃   ┣━ Https/                    // アクセス管理Dir
+  ┃   ┃   ┣━ Request.php
+  ┃   ┃   ┗━ Response.php
   ┃   ┣━ Utils/                    // 汎用機能格納Dir
   ┃   ┃   ┗━ AutoLoader.php
   ┃   ┗━ Project.php
