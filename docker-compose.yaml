@@ -1,4 +1,20 @@
 services:
+  db:
+    build:
+      context: .
+      dockerfile: ${DOCKER_DIR}/mysql/Dockerfile
+    container_name: mysql
+    ports:
+      - ${MYSQL_PORT}:3306
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql-volume:/var/lib/mysql
+      - ${DOCKER_DIR}/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ${DOCKER_DIR}/mysql/init.d:/docker-entrypoint-initdb.d
   app:
     build:
       context: .
@@ -9,14 +25,19 @@ services:
     expose:
       - ${PHP_APP_PORT}
       - ${PHP_DEBUG_PORT}
+    depends_on:
+      - db
   web:
     build:
       context: .
       dockerfile: ${DOCKER_DIR}/nginx/Dockerfile
     container_name: nginx
-    depends_on:
-      - app
     ports:
       - ${WEB_PORT}:80
     volumes:
       - ${SOURCE_DIR}/:/${DOMAIN}
+    depends_on:
+      - app
+
+volumes:
+  mysql-volume:
